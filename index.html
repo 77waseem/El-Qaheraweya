@@ -629,9 +629,9 @@
         const CONFIG = {
             APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbwA2f3WGNlOx-3wqQoel0PRK2Tagda6Ao4GaZrIDEM6TCGs7h2Jx4B-dCtYGHIEUymQDQ/exec",
             QUIZ_START_HOUR: 22,
-            QUIZ_START_MINUTE: 0,
-            QUIZ_END_HOUR: 22,
-            QUIZ_END_MINUTE: 30
+            QUIZ_START_MINUTE: 30,
+            QUIZ_END_HOUR: 23,
+            QUIZ_END_MINUTE: 0
         };
 
         const QUESTIONS = [
@@ -747,7 +747,7 @@
             printDateTime: document.getElementById('printDateTime')
         };
 
-        function checkTimeAccess() {
+       function checkTimeAccess() {
             const now = new Date();
             const currentHour = now.getHours();
             const currentMinute = now.getMinutes();
@@ -758,7 +758,6 @@
             
             return (currentTime >= startTime && currentTime <= endTime);
         }
-
         function updateScreenVisibility() {
             const allScreens = [
                 elements.timeLockedScreen,
@@ -1106,4 +1105,5 @@
     </script>
 </body>
 </html>
+
 
