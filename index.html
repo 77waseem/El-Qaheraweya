@@ -517,7 +517,7 @@
     </div>
 
     <div class="container">
-        <div class="card" id="timeLockedScreen">
+        <div class="card hidden" id="timeLockedScreen">
             <div class="congrats-screen">
                 <div class="congrats-icon">🔒</div>
                 <h2>المسابقة مغلقة</h2>
@@ -628,7 +628,7 @@
     <script>
         const CONFIG = {
             APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbwA2f3WGNlOx-3wqQoel0PRK2Tagda6Ao4GaZrIDEM6TCGs7h2Jx4B-dCtYGHIEUymQDQ/exec",
-            QUIZ_START_HOUR: 20,
+            QUIZ_START_HOUR: 0,
             QUIZ_START_MINUTE: 0,
             QUIZ_END_HOUR: 23,
             QUIZ_END_MINUTE: 59
@@ -672,23 +672,23 @@
             },
             {
                 id: 6,
-                text: "إفيه: "are you speak english ... سبيك بور سعيدي"",
+                text: "إفيه: are you speak english ... سبيك بور سعيدي",
                 choices: ["ابو العربي", "اللمبي 8 جيجا", "غبي منه فيه ","فول الصين العظيم"],
                 correctChoice: 0,
                 timeout: 15
             },
             {
                 id: 7,
-                text: ""إفيه: "ماساااااااج ... ماشي اااالز.. لا لا مساج ... ماشاز"",
+                text: "إفيه:ماساااااااج ... ماشي اااالز.. لا لا مساج ... ماشاز",
                 choices: ["الناظر ", " صعيدي في الجامعة الأمريكية", "التجربة الدنماركية","حريم كريم"],
                 correctChoice: 3,
                 timeout: 15
             },
             {
                 id: 8,
-                text: "🎬محمد هنيدي جاب ٥١٪ في ثانوية عامة في فيلم إيه؟",
-                choices: ["صعيدي في الجامعة الامريكية", "همام في امستردام", "يا انا يا خالتي", "فول الصين العظيم"],
-                correctChoice: 3,
+                text: "الكونسيلر يستخدم عاده لاخفاءه ؟",
+                choices: ["الشعر","الهالات السودة","الشفاه","الاظافر"],
+                correctChoice: 1,
                 timeout: 15
             },
             {
@@ -704,7 +704,7 @@
                 choices: ["أ","ب","ج","د","ه"],
                 correctChoice: 1,
                 timeout: 30,
-                image: "q.jpg"
+                image: "qq.jpg"
             }
         ];
 
@@ -759,7 +759,7 @@
             return (currentTime >= startTime && currentTime <= endTime);
         }
 
-    function updateScreenVisibility() {
+        function updateScreenVisibility() {
             const allScreens = [
                 elements.timeLockedScreen,
                 elements.landingScreen,
@@ -776,6 +776,7 @@
                 elements.timeLockedScreen.classList.remove('hidden');
             }
         }
+
         async function validateCode(code) {
             try {
                 const url = `${CONFIG.APPS_SCRIPT_URL}?action=validate&code=${encodeURIComponent(code)}&_t=${Date.now()}`;
@@ -1105,7 +1106,3 @@
     </script>
 </body>
 </html>
-
-
-
-
