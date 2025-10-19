@@ -628,7 +628,7 @@
     <script>
         const CONFIG = {
             APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbwA2f3WGNlOx-3wqQoel0PRK2Tagda6Ao4GaZrIDEM6TCGs7h2Jx4B-dCtYGHIEUymQDQ/exec",
-            QUIZ_START_HOUR: 0,
+            QUIZ_START_HOUR: 20,
             QUIZ_START_MINUTE: 0,
             QUIZ_END_HOUR: 23,
             QUIZ_END_MINUTE: 59
@@ -759,19 +759,23 @@
             return (currentTime >= startTime && currentTime <= endTime);
         }
 
-        function updateScreenVisibility() {
+    function updateScreenVisibility() {
+            const allScreens = [
+                elements.timeLockedScreen,
+                elements.landingScreen,
+                elements.questionScreen,
+                elements.congratsScreen,
+                elements.invalidCodeScreen
+            ];
+            
+            allScreens.forEach(screen => screen.classList.add('hidden'));
+            
             if (checkTimeAccess()) {
-                elements.timeLockedScreen.classList.add('hidden');
                 elements.landingScreen.classList.remove('hidden');
             } else {
                 elements.timeLockedScreen.classList.remove('hidden');
-                elements.landingScreen.classList.add('hidden');
-                elements.questionScreen.classList.add('hidden');
-                elements.congratsScreen.classList.add('hidden');
-                elements.invalidCodeScreen.classList.add('hidden');
             }
         }
-
         async function validateCode(code) {
             try {
                 const url = `${CONFIG.APPS_SCRIPT_URL}?action=validate&code=${encodeURIComponent(code)}&_t=${Date.now()}`;
@@ -1101,6 +1105,7 @@
     </script>
 </body>
 </html>
+
 
 
 
